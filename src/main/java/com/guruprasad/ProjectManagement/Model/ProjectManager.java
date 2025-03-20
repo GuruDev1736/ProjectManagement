@@ -11,20 +11,21 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "client")
-public class Client {
+@Table(name = "projectManager")
+public class ProjectManager {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String clientName;
-    private String clientPhoneNo;
-    private String clientEmail;
-    private String clientAddress;
+    private String projectManagerName;
+    private String projectManagerPhoneNo;
+    private String projectManagerEmail;
+    private String projectManagerAddress;
     private Date creationDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "projectId", nullable = false)
     private Project project;
+
 }

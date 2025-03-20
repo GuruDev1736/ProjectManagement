@@ -2,7 +2,10 @@ package com.guruprasad.ProjectManagement.Model;
 
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Date;
 
@@ -11,17 +14,17 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "client")
-public class Client {
+@Table(name = "teamMembers")
+public class TeamMembers {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String clientName;
-    private String clientPhoneNo;
-    private String clientEmail;
-    private String clientAddress;
+    private String memberName;
+    private String memberEmail;
+    private String memberPhone;
+    private String memberAddress;
     private Date creationDate;
 
     @ManyToOne(fetch = FetchType.LAZY)

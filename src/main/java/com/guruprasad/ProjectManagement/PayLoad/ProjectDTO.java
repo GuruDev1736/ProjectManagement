@@ -15,7 +15,15 @@ import java.util.Date;
 public class ProjectDTO {
     private int Id;
     private String projectName;
-    private int projectCost;
+    private String projectDescription;
+    private String startDate;
+    private String projectDeadline;
     private String status;
-    private Date projectDeadline;
+    private int projectCost;
+    private String priority;
+    private String projectCategory;
+    private String projectManager;
+    private String projectNote;
+    private Date creationDate = new Date();
+    private ClientDTO client;
 }

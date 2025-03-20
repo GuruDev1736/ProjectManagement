@@ -23,12 +23,24 @@ public class Project {
     private int Id;
 
     private String projectName;
-    private int projectCost;
+    private String projectDescription;
+    private String startDate;
+    private String projectDeadline;
     private String status;
-    private Date projectDeadline;
+    private int projectCost;
+    private String priority;
+    private String projectCategory;
+    private String projectManager;
+    private String projectNote;
+    private Date creationDate;
 
     @OneToMany(mappedBy = "project",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Client> client = new ArrayList<>();
 
+    @OneToMany(mappedBy = "project",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<ProjectManager> managers = new ArrayList<>();
+
+    @OneToMany(mappedBy = "project",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<TeamMembers> members = new ArrayList<>();
 
 }

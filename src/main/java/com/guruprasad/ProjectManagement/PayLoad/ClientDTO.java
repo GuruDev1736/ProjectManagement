@@ -1,10 +1,13 @@
 package com.guruprasad.ProjectManagement.PayLoad;
 
 
+import com.guruprasad.ProjectManagement.Model.Project;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.Date;
 
 @Getter
 @Setter
@@ -17,5 +20,6 @@ public class ClientDTO {
     private String clientPhoneNo;
     private String clientEmail;
     private String clientAddress;
-    private String clientCollege;
+    private Date creationDate = new Date();
+    private ProjectDTO project;
 }
