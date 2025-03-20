@@ -8,7 +8,9 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -37,10 +39,20 @@ public class Project {
     @OneToMany(mappedBy = "project",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Client> client = new ArrayList<>();
 
-    @OneToMany(mappedBy = "project",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private List<ProjectManager> managers = new ArrayList<>();
+    @ManyToMany
+    @JoinTable(
+        name = "project_managers",
+        joinColumns = @JoinColumn(name = "project_id"),
+        inverseJoinColumns = @JoinColumn(name = "manager_id")
+    )
+    private Set<ProjectManager> managers = new HashSet<>();
 
-    @OneToMany(mappedBy = "project",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private List<TeamMembers> members = new ArrayList<>();
+    @ManyToMany
+    @JoinTable(
+        name = "project_team_members",
+        joinColumns = @JoinColumn(name = "project_id"),
+        inverseJoinColumns = @JoinColumn(name = "team_member_id")
+    )
+    private Set<TeamMembers> members = new HashSet<>();
 
 }

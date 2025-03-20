@@ -20,5 +20,5 @@ public class ProjectManagerDTO {
     private String projectManagerPhoneNo;
     private String projectManagerEmail;
     private String projectManagerAddress;
-    private Date creationDate;
+    private Date creationDate = new Date();
 }

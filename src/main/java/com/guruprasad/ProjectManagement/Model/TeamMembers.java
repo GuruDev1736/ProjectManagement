@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -27,7 +29,6 @@ public class TeamMembers {
     private String memberAddress;
     private Date creationDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "projectId", nullable = false)
-    private Project project;
+    @ManyToMany(mappedBy = "members")
+    private Set<Project> projects = new HashSet<>();
 }

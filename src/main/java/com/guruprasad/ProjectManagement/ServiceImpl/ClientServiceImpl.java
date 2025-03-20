@@ -32,7 +32,6 @@ public class ClientServiceImpl implements ClientService {
     public ClientDTO updateClient(int id, ClientDTO clientDTO) {
         Client client = clientRepo.findById(id).orElseThrow(()-> new ResourceNotFoundException("Client","Id",id));
         client.setClientName(clientDTO.getClientName());
-        client.setClientCollege(clientDTO.getClientCollege());
         client.setClientAddress(clientDTO.getClientAddress());
         client.setClientEmail(clientDTO.getClientEmail());
         client.setClientPhoneNo(clientDTO.getClientPhoneNo());

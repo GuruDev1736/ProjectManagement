@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -24,8 +26,7 @@ public class ProjectManager {
     private String projectManagerAddress;
     private Date creationDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "projectId", nullable = false)
-    private Project project;
+    @ManyToMany(mappedBy = "managers")
+    private Set<Project> projects = new HashSet<>();
 
 }

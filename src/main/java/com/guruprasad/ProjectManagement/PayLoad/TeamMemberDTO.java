@@ -19,5 +19,6 @@ public class TeamMemberDTO {
     private String memberEmail;
     private String memberPhone;
     private String memberAddress;
-    private Date creationDate;
+    private Date creationDate = new Date();
+
 }
