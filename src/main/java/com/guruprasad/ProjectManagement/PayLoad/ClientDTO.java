@@ -21,5 +21,4 @@ public class ClientDTO {
     private String clientEmail;
     private String clientAddress;
     private Date creationDate = new Date();
-    private ProjectDTO project;
 }

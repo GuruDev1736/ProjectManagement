@@ -22,7 +22,7 @@ public class ProjectDTO {
     private int projectCost;
     private String priority;
     private String projectCategory;
-    private String projectManager;
+    private ProjectManagerDTO projectManager;
     private String projectNote;
     private Date creationDate = new Date();
     private ClientDTO client;

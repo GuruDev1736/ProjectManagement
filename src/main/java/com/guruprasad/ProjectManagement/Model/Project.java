@@ -32,7 +32,6 @@ public class Project {
     private int projectCost;
     private String priority;
     private String projectCategory;
-    private String projectManager;
     private String projectNote;
     private Date creationDate;
 
