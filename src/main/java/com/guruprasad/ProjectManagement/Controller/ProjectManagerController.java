@@ -17,7 +17,7 @@ import com.guruprasad.ProjectManagement.PayLoad.ProjectManagerDTO;
 import com.guruprasad.ProjectManagement.Service.ProjectManagerService;
 
 @RestController
-@RequestMapping("/api/project-manager")
+@RequestMapping("/manager")
 public class ProjectManagerController {
 
     private final ProjectManagerService projectManagerService;
@@ -26,9 +26,9 @@ public class ProjectManagerController {
         this.projectManagerService = projectManagerService;
     }
 
-    @PostMapping("/create")
-    public ResponseEntity<ApiResponse<ProjectManagerDTO>> createProjectManager(@RequestBody ProjectManagerDTO projectManagerDTO){
-        ProjectManagerDTO createdProjectManager = projectManagerService.createProjectManager(projectManagerDTO);
+    @PostMapping("/create/{id}")
+    public ResponseEntity<ApiResponse<ProjectManagerDTO>> createProjectManager(@RequestBody ProjectManagerDTO projectManagerDTO , @PathVariable("id") int id){
+        ProjectManagerDTO createdProjectManager = projectManagerService.createProjectManager(projectManagerDTO,id);
         return ResponseEntity.ok(new ApiResponse<>("200","Project Manager created successfully", createdProjectManager));
     }
 

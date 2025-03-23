@@ -35,16 +35,12 @@ public class Project {
     private String projectNote;
     private Date creationDate;
 
-    @OneToMany(mappedBy = "project",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private List<Client> client = new ArrayList<>();
+    @OneToOne(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Client client;
 
-    @ManyToMany
-    @JoinTable(
-        name = "project_managers",
-        joinColumns = @JoinColumn(name = "project_id"),
-        inverseJoinColumns = @JoinColumn(name = "manager_id")
-    )
-    private Set<ProjectManager> managers = new HashSet<>();
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "project_manager_id")
+    private ProjectManager projectManager;
 
     @ManyToMany
     @JoinTable(

@@ -2,8 +2,10 @@ package com.guruprasad.ProjectManagement.ServiceImpl;
 
 import com.guruprasad.ProjectManagement.Exception.ResourceNotFoundException;
 import com.guruprasad.ProjectManagement.Model.Client;
+import com.guruprasad.ProjectManagement.Model.Project;
 import com.guruprasad.ProjectManagement.PayLoad.ClientDTO;
 import com.guruprasad.ProjectManagement.Repository.ClientRepo;
+import com.guruprasad.ProjectManagement.Repository.ProjectRepo;
 import com.guruprasad.ProjectManagement.Service.ClientService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -15,15 +17,19 @@ public class ClientServiceImpl implements ClientService {
 
     private final ModelMapper modelMapper;
     private final ClientRepo clientRepo;
+    private final ProjectRepo projectRepo;
 
-    public ClientServiceImpl(ModelMapper modelMapper, ClientRepo clientRepo) {
+    public ClientServiceImpl(ModelMapper modelMapper, ClientRepo clientRepo , ProjectRepo projectRepo) {
         this.modelMapper = modelMapper;
         this.clientRepo = clientRepo;
+        this.projectRepo = projectRepo;
     }
 
     @Override
-    public ClientDTO createClient(ClientDTO clientDTO) {
+    public ClientDTO createClient(ClientDTO clientDTO , int projectId) {
+        Project project = projectRepo.findById(projectId).orElseThrow(()-> new ResourceNotFoundException("Project","Id",projectId));
         Client client = modelMapper.map(clientDTO,Client.class);
+        client.setProject(project);
         Client saved = clientRepo.save(client);
         return modelMapper.map(saved,ClientDTO.class);
     }

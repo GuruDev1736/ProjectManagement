@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ClientService {
 
-    ClientDTO createClient(ClientDTO clientDTO);
+    ClientDTO createClient(ClientDTO clientDTO , int projectId);
     ClientDTO updateClient(int id , ClientDTO clientDTO);
     ClientDTO getClientById(int id);
     void deleteClient(int id);

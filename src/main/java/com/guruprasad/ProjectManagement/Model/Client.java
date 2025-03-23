@@ -24,7 +24,7 @@ public class Client {
     private String clientAddress;
     private Date creationDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "projectId", nullable = false)
     private Project project;
 }

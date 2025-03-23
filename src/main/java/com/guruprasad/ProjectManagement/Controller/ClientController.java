@@ -20,10 +20,10 @@ public class ClientController {
     }
 
 
-    @PostMapping("/create")
-    public ResponseEntity<ApiResponse<ClientDTO>> createClient(@RequestBody ClientDTO clientDTO)
+    @PostMapping("/create/{id}")
+    public ResponseEntity<ApiResponse<ClientDTO>> createClient(@RequestBody ClientDTO clientDTO , @PathVariable("id") int id)
     {
-        ClientDTO clientDTO1 = clientService.createClient(clientDTO);
+        ClientDTO clientDTO1 = clientService.createClient(clientDTO,id);
         return ResponseEntity.ok(new ApiResponse<>("200","Client Created Successfully",clientDTO1));
     }
 

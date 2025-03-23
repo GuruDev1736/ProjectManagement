@@ -26,7 +26,7 @@ public class ProjectManager {
     private String projectManagerAddress;
     private Date creationDate;
 
-    @ManyToMany(mappedBy = "managers")
+    @OneToMany(mappedBy = "projectManager", cascade = CascadeType.ALL)
     private Set<Project> projects = new HashSet<>();
 
 }
