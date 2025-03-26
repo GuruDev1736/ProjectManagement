@@ -26,9 +26,9 @@ public class TeamMemberController {
         this.teamMemberService = teamMemberService;
     }
 
-    @PostMapping("/create")
-    public ResponseEntity<ApiResponse<TeamMemberDTO>> createTeamMember(@RequestBody TeamMemberDTO teamMemberDTO) {
-        TeamMemberDTO createdTeamMember = teamMemberService.createTeamMember(teamMemberDTO);
+    @PostMapping("/create/{projectId}")
+    public ResponseEntity<ApiResponse<TeamMemberDTO>> createTeamMember(@RequestBody TeamMemberDTO teamMemberDTO , @PathVariable int projectId) {
+        TeamMemberDTO createdTeamMember = teamMemberService.createTeamMember(teamMemberDTO, projectId);
         return ResponseEntity.ok(new ApiResponse<>("200", "Team Member created successfully", createdTeamMember));
     }
 

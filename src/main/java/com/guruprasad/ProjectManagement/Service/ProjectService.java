@@ -18,4 +18,6 @@ public interface ProjectService {
 
     List<ProjectDTO> getAllProject();
 
+    void changeStatus(int projectId, String status);
+
 }

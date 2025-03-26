@@ -6,7 +6,7 @@ import com.guruprasad.ProjectManagement.PayLoad.TeamMemberDTO;
 
 public interface TeamMemberService {
 
-    TeamMemberDTO createTeamMember(TeamMemberDTO teamMemberDTO);
+    TeamMemberDTO createTeamMember(TeamMemberDTO teamMemberDTO , int projectId);
 
     List<TeamMemberDTO> getAllTeamMembers();
 

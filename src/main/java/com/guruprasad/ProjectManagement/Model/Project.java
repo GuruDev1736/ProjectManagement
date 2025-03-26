@@ -42,12 +42,6 @@ public class Project {
     @JoinColumn(name = "project_manager_id")
     private ProjectManager projectManager;
 
-    @ManyToMany
-    @JoinTable(
-        name = "project_team_members",
-        joinColumns = @JoinColumn(name = "project_id"),
-        inverseJoinColumns = @JoinColumn(name = "team_member_id")
-    )
-    private Set<TeamMembers> members = new HashSet<>();
-
+   @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+   private List<TeamMembers> teamMembers = new ArrayList<>();
 }

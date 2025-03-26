@@ -60,4 +60,11 @@ public class ProjectServiceImpl implements ProjectService {
         return projects;
     }
 
+    @Override
+    public void changeStatus(int projectId, String status) {
+        Project project = projectRepo.findById(projectId).orElseThrow(() -> new ResourceNotFoundException("Project","Id", projectId));
+        project.setStatus(status);
+        projectRepo.save(project);
+    }
+
 }

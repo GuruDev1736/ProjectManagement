@@ -56,4 +56,10 @@ public class ProjectController {
         return ResponseEntity.ok(new ApiResponse<>("200","Project Deleted Successfully",""));
     }
 
+    @PutMapping("/status/{id}/{status}")
+    public ResponseEntity<ApiResponse<String>> changeStatus(@PathVariable("id") int id, @PathVariable("status") String status)
+    {
+        projectService.changeStatus(id, status);
+        return ResponseEntity.ok(new ApiResponse<>("200","Status Changed Successfully",""));
+    }
 }

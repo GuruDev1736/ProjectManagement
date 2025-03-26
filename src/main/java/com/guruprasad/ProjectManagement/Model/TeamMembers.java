@@ -29,6 +29,7 @@ public class TeamMembers {
     private String memberAddress;
     private Date creationDate;
 
-    @ManyToMany(mappedBy = "members")
-    private Set<Project> projects = new HashSet<>();
+   @ManyToOne(fetch = FetchType.EAGER)
+   @JoinColumn(name = "project_id")
+   private Project project;
 }
